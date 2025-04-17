@@ -11,8 +11,8 @@
 <body class="bg-slate-100 text-slate-900">
 
     <!-- Header -->
-    <header class="bg-slate-800 text-white shadow-lg">
-        <nav class="container mx-auto flex justify-between items-center py-4 px-6 bg-gray-900 text-white shadow-lg">
+    <header class="bg-blue-900 text-white shadow-lg">
+        <nav class="container mx-auto flex justify-between items-center py-4 px-6 bg-blue-900 text-white shadow-lg">
             <a href="{{ route('home') }}" class="text-xl font-bold tracking-wide hover:text-gray-400 transition duration-300">{{env('APP_NAME')}}</a>
             
             <!-- Mobile Menu Button -->
@@ -33,9 +33,11 @@
                             <li><a href="{{ route('dashboard') }}" class="block px-4 py-2 rounded-lg bg-gray-700 hover:bg-gray-600 transition">Dashboard</a></li>
                         @endauth
                         @guest
+                            <li><a href="{{ route('home') }}" class="block px-4 py-2 rounded-lg bg-gray-700 hover:bg-gray-600 transition">Home</a></li>
                             <li><a href="{{ route('about') }}" class="block px-4 py-2 rounded-lg bg-gray-700 hover:bg-gray-600 transition">About us</a></li>
                             <li><a href="{{ route('services') }}" class="block px-4 py-2 rounded-lg bg-gray-700 hover:bg-gray-600 transition">Our Services</a></li>
                             <li><a href="{{ route('contact') }}" class="block px-4 py-2 rounded-lg bg-gray-700 hover:bg-gray-600 transition">Contact Us</a></li>
+                            <li><a href="https://blog.bionictech.com.au/" class="block px-4 py-2 rounded-lg bg-gray-700 hover:bg-gray-600 transition">Blog</a></li>
                             <li><a href="{{ route('login') }}" class="block px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 transition">Login</a></li>
                             {{-- <li><a href="{{ route('register') }}" class="block px-4 py-2 rounded-lg bg-green-600 hover:bg-green-500 transition">Register</a></li> --}}
                         @endguest
@@ -58,9 +60,11 @@
                     </div>
                 @endauth
                 @guest
-                    <a href="{{ route('about') }}" class="px-4 py-2 hover:text-gray-400 transition">About us</a>
+                <a href="{{ route('home') }}" class="px-4 py-2 hover:text-gray-400 transition">Home</a>
+                 <a href="{{ route('about') }}" class="px-4 py-2 hover:text-gray-400 transition">About us</a>
                     <a href="{{ route('services') }}" class="px-4 py-2 hover:text-gray-400 transition">Our Service</a>
                     <a href="{{ route('contact') }}" class="px-4 py-2 hover:text-gray-400 transition">Contact Us</a>
+                    <a href="https://blog.bionictech.com.au/" class="px-4 py-2 hover:text-gray-400 transition">Blog</a>
                     <a href="{{ route('login') }}" class="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-lg transition">Login</a>
                     {{-- <a href="{{ route('register') }}" class="px-4 py-2 bg-green-600 hover:bg-green-500 text-white rounded-lg transition">Register</a> --}}
                 @endguest

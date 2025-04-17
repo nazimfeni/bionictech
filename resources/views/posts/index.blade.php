@@ -7,11 +7,13 @@
     @guest
     
     <!-- Hero Section -->
-    <section class="bg-gradient-to-r from-blue-500 to-teal-400 text-white py-20 w-full">
-        <div class="w-full text-center">
-            <h1 class="text-4xl md:text-5xl font-bold mb-4">Welcome to Bionic Tech Australia</h1>
-            <p class="text-lg md:text-xl mb-6">We offer the best solutions for your business needs. Simplify your tasks and focus on growth.</p>
-            <a href="{{ route('services') }}" class="bg-white text-blue-500 px-6 py-3 rounded-full text-lg font-semibold hover:bg-blue-500 hover:text-white transition-all">Get Started</a>
+     
+     <section id="home" class="bg-blue-800 text-white h-screen flex items-center justify-center bg-cover bg-center relative" style="background-image: url('https://via.placeholder.com/1920x1080');">
+        <div class="absolute inset-0 bg-black opacity-50"></div>
+        <div class="z-10 text-center">
+            <h2 class="text-5xl  font-extrabold mb-4 text-white">Innovating the Future of Technology</h2>
+            <p class="text-lg mb-8">Providing innovative IT solutions and services to help businesses grow and succeed in the digital world.</p>
+            <a href="#services" class="bg-yellow-500 text-black px-6 py-3 rounded-full text-lg font-semibold hover:bg-yellow-600 transition">Our Services</a>
         </div>
     </section>
     
@@ -64,11 +66,12 @@
     </section>
     
     <!-- Call-to-Action Section -->
-    <section class="bg-blue-500 text-white py-20 w-full">
+    <section class="bg-blue-900 text-white py-20 w-full">
         <div class="w-full text-center">
             <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to Get Started?</h2>
             <p class="text-lg mb-6">Join thousands of satisfied customers and grow your business with us. Start your journey today!</p>
-            <a href="{{ route('contact') }}" class="bg-white text-blue-500 px-6 py-3 rounded-full text-lg font-semibold hover:bg-blue-500 hover:text-white transition-all">Contact Us</a>
+            <a href="{{ route('contact') }}" class="bg-yellow-500 text-black px-6 py-3 rounded-full text-lg font-semibold hover:bg-yellow-600 transition">Contact Us</a>
+
         </div>
     </section>
     
