@@ -31,6 +31,14 @@
                             <li class="text-lg font-bold">{{ auth()->user()->username }}</li>
                             <hr class="border-gray-600 my-2">
                             <li><a href="{{ route('dashboard') }}" class="block px-4 py-2 rounded-lg bg-gray-700 hover:bg-gray-600 transition">Dashboard</a></li>
+                            <li>
+                            <li><a href="{{ route('profile.index') }}" class="block px-4 py-2 rounded-lg  hover:bg-gray-600 transition">Profile</a></li>
+                            <li>
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+                                <button type="submit" class="w-full text-left px-4 py-2 rounded-lg hover:bg-gray-600 transition">Logout</button>
+                            </form>
+                        </li>
                         @endauth
                         @guest
                             <li><a href="{{ route('home') }}" class="block px-4 py-2 rounded-lg bg-gray-700 hover:bg-gray-600 transition">Home</a></li>
@@ -56,6 +64,12 @@
                             <p class="px-4 py-2 font-semibold">{{ auth()->user()->username }}</p>
                             <hr class="border-gray-300">
                             <a href="{{ route('dashboard') }}" class="block px-4 py-2 hover:bg-gray-200 transition">Dashboard</a>
+                            <a href="{{ route('profile.index') }}" class="block px-4 py-2 hover:bg-gray-200 transition">Profile</a>
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+                                <button type="submit" class="w-full text-left px-4 py-2 hover:bg-gray-200 transition">Logout</button>
+                            </form>
+                        
                         </div>
                     </div>
                 @endauth

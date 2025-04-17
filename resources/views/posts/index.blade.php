@@ -1,7 +1,7 @@
 <x-layout>
 
     @auth
-        <h1>Logged In</h1>
+    <h1>Hello {{auth()->user()->username}}</h1>
     @endauth
     
     @guest
@@ -13,7 +13,7 @@
         <div class="z-10 text-center">
             <h2 class="text-5xl  font-extrabold mb-4 text-white">Innovating the Future of Technology</h2>
             <p class="text-lg mb-8">Providing innovative IT solutions and services to help businesses grow and succeed in the digital world.</p>
-            <a href="#services" class="bg-yellow-500 text-black px-6 py-3 rounded-full text-lg font-semibold hover:bg-yellow-600 transition">Our Services</a>
+            <a href="{{ route('services') }}" class="bg-yellow-500 text-black px-6 py-3 rounded-full text-lg font-semibold hover:bg-yellow-600 transition">Our Services</a>
         </div>
     </section>
     
