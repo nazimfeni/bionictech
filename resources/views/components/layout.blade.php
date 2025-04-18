@@ -95,7 +95,7 @@
                             <li><a href="{{ route('products') }}" class="block px-4 py-2 rounded-lg bg-gray-700 hover:bg-gray-600 transition">Our Products</a></li>
                             <li><a href="{{ route('services') }}" class="block px-4 py-2 rounded-lg bg-gray-700 hover:bg-gray-600 transition">Our Services</a></li>
                             <li><a href="{{ route('contact') }}" class="block px-4 py-2 rounded-lg bg-gray-700 hover:bg-gray-600 transition">Contact Us</a></li>
-                            <li><a href="https://blog.bionictech.com.au/" class="block px-4 py-2 rounded-lg bg-gray-700 hover:bg-gray-600 transition">Blog</a></li>
+                            <li><a href="https://blog.bionictech.com.au/" target="_blank" class="block px-4 py-2 rounded-lg bg-gray-700 hover:bg-gray-600 transition">Blog</a></li>
                             <li><a href="{{ route('login') }}" class="block px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 transition">Login</a></li>
                             {{-- <li><a href="{{ route('register') }}" class="block px-4 py-2 rounded-lg bg-green-600 hover:bg-green-500 transition">Register</a></li> --}}
                         @endguest
@@ -129,7 +129,7 @@
                  <a href="{{ route('products') }}" class="px-4 py-2 hover:text-gray-400 transition">Our Products</a>
                     <a href="{{ route('services') }}" class="px-4 py-2 hover:text-gray-400 transition">Our Services</a>
                     <a href="{{ route('contact') }}" class="px-4 py-2 hover:text-gray-400 transition">Contact Us</a>
-                    <a href="https://blog.bionictech.com.au/" class="px-4 py-2 hover:text-gray-400 transition">Blog</a>
+                    <a href="https://blog.bionictech.com.au/" target="_blank" class="px-4 py-2 hover:text-gray-400 transition">Blog</a>
                     <a href="{{ route('login') }}" class="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-lg transition">Login</a>
                     {{-- <a href="{{ route('register') }}" class="px-4 py-2 bg-green-600 hover:bg-green-500 text-white rounded-lg transition">Register</a> --}}
                 @endguest
