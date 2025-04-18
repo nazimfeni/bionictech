@@ -3,7 +3,7 @@
         <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
             <!-- Logo & About -->
             <div>
-                <h2 class="text-2xl font-bold text-white mb-4">BionicTech</h2>
+                <h2 class="text-2xl font-bold text-white mb-4">Bionic Tech Australia</h2>
                 <p class="text-sm text-slate-300">
                     Bionic Tech Australia is committed to providing innovative digital solutions that empower businesses worldwide.
                 </p>
@@ -14,8 +14,8 @@
                 <h3 class="text-lg font-semibold text-white mb-4">Contact Us</h3>
                 <ul class="text-sm space-y-2 text-slate-300">
                     <li>Email: <a href="mailto:info@bionictech.au" class="hover:text-white">info@bionictech.au</a></li>
-                    <li>Phone: <a href="tel:+6112345678" class="hover:text-white">+61 123 456 78</a></li>
-                    <li>Location: Sydney, Australia</li>
+                    <li>Phone: <a href="tel:+6112345678" class="hover:text-white">+61 1300 043 198</a></li>
+                    <li>Location: Adelaide, SA, Australia, South Australia</li>
                 </ul>
             </div>
 
@@ -34,7 +34,7 @@
             <div>
                 <h3 class="text-lg font-semibold text-white mb-4">Follow Us</h3>
                 <div class="flex space-x-4 text-xl text-slate-300">
-                    <a href="#" class="hover:text-white"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.facebook.com/BionicTechAustralia/" target="_blank" class="hover:text-white"><i class="fab fa-facebook-f"></i></a>
                     <a href="#" class="hover:text-white"><i class="fab fa-twitter"></i></a>
                     <a href="#" class="hover:text-white"><i class="fab fa-linkedin-in"></i></a>
                     <a href="#" class="hover:text-white"><i class="fab fa-instagram"></i></a>
