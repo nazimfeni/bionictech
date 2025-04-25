@@ -18,6 +18,11 @@ class PageController extends Controller
         return view('pages.products');
     }
 
+    public function careers(){
+        return view('pages.careers');
+    }
+
+
 
 
     public function contact(){

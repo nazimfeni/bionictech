@@ -27,6 +27,8 @@ Route::get('/about', [PageController::class, 'about'])->name('about');
 Route::get('/contact', [PageController::class, 'contact'])->name('contact');
 Route::get('/services', [PageController::class, 'services'])->name('services');
 Route::get('/products', [PageController::class, 'products'])->name('products');
+Route::get('/careers', [PageController::class, 'careers'])->name('careers');
+
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth')->name('dashboard');
 
 
