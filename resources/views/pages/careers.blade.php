@@ -1,6 +1,5 @@
 <x-layout>
-
-    <div class="container py-10">
+    <div class="container py-10 ml-10">
         <!-- Header Section with Image and Intro -->
         <div class="flex flex-col md:flex-row items-center md:items-start gap-10 mb-12">
             <!-- Text Left -->
@@ -71,5 +70,4 @@
             </div>
         </div>
     </div>
-
 </x-layout>
