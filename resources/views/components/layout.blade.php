@@ -63,7 +63,7 @@
     <header class="bg-blue-900 text-white shadow-lg">
         <nav class="container mx-auto flex justify-between items-center py-4 px-6 bg-blue-900 text-white shadow-lg">
             <a href="{{ route('home') }}" class="text-xl font-bold tracking-wide hover:text-gray-400 transition duration-300">{{env('APP_NAME')}}</a>
-            
+
             <!-- Mobile Menu Button -->
             <div class="lg:hidden" x-data="{ open: false }">
                 <button @click="open = !open" class="text-white focus:outline-none">
@@ -71,7 +71,7 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
                     </svg>
                 </button>
-                
+
                 <!-- Sidebar -->
                 <div x-show="open" @click.outside="open = false" class="fixed top-0 right-0 w-64 h-full bg-gray-800 text-white shadow-xl z-50 p-6 transition-transform transform translate-x-0">
                     <button @click="open = false" class="absolute top-4 right-4 text-white text-2xl">&times;</button>
@@ -103,7 +103,7 @@
                     </ul>
                 </div>
             </div>
-            
+
             <!-- Desktop Menu -->
             <div class="hidden lg:flex items-center gap-6">
                 @auth
@@ -120,7 +120,7 @@
                                 @csrf
                                 <button type="submit" class="w-full text-left px-4 py-2 hover:bg-gray-200 transition">Logout</button>
                             </form>
-                        
+
                         </div>
                     </div>
                 @endauth
@@ -137,15 +137,15 @@
                 @endguest
             </div>
         </nav>
-        
-        
+
+
     </header>
 
     <!-- Main Content -->
 
- 
+
         {{ $slot }}
-   
+
     <x-footer />
 </body>
 
