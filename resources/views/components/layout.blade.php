@@ -4,149 +4,296 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>{{ env('APP_NAME', 'Laravel App') }}</title>
-    <!-- Font Awesome for Icons -->
+    <title>{{ env('APP_NAME', 'Bionic Tech Australia') }}</title>
+
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
     <!-- Alpine JS -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+
+        [x-cloak] { display: none !important; }
+
+        .site-header { position: sticky; top: 0; z-index: 100; }
+
+        .topbar { background: linear-gradient(90deg, #0f172a 0%, #1e3a5f 100%); }
+
+        .main-header {
+            background: linear-gradient(135deg, #0f172a 0%, #1e40af 60%, #1d4ed8 100%);
+            box-shadow: 0 4px 30px rgba(0,0,0,0.3);
+        }
+
+        .nav-link { position: relative; padding-bottom: 4px; }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0;
+            width: 0; height: 2px;
+            background: linear-gradient(90deg, #60a5fa, #a78bfa);
+            border-radius: 2px;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after { width: 100%; }
+
+        .logo-text {
+            background: linear-gradient(135deg, #ffffff, #93c5fd);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .mobile-sidebar-overlay { background: rgba(0,0,0,0.55); backdrop-filter: blur(4px); }
+        .mobile-sidebar { background: linear-gradient(180deg, #0f172a 0%, #1e3a5f 100%); }
+
+        .btn-cta {
+            background: linear-gradient(135deg, #3b82f6, #6366f1);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(99,102,241,0.4);
+        }
+        .btn-cta:hover {
+            background: linear-gradient(135deg, #2563eb, #4f46e5);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(99,102,241,0.5);
+        }
+    </style>
 </head>
-<body class="bg-slate-100 text-slate-900">
+<body class="bg-white text-slate-900 antialiased">
 
-<!-- Top Bar -->
-<div class="bg-slate-800 text-white text-sm">
-    <div class="container mx-auto px-6 py-2 flex flex-col sm:flex-row justify-between items-center gap-2">
-        <!-- Contact Info -->
-        <div class="flex items-center gap-4">
-            <span class="flex items-center gap-1">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-yellow-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h2l3.6 7.59-1.35 2.45A1 1 0 008 17h9a1 1 0 001-1v-1.34a1 1 0 00-.64-.94L10 7H3z" />
-                </svg>
-                +61 1300 043 198
-            </span>
-            <span class="flex items-center gap-1">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-yellow-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12H8m0 0l4-4m-4 4l4 4" />
-                </svg>
-                info@bionictech.com.au
-            </span>
-        </div>
+<!-- ===== STICKY HEADER ===== -->
+<div class="site-header">
 
-        <!-- Social Icons -->
-        <div class="flex items-center gap-3">
-            <a href="https://www.facebook.com/BionicTechAustralia/" target="_blank" class="hover:text-blue-400 transition">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M22 12a10 10 0 10-11.5 9.95V15.3h-2v-3.3h2v-2.5c0-2 1.2-3.1 3-3.1.9 0 1.8.1 1.8.1v2h-1c-1 0-1.3.6-1.3 1.2v1.9h2.2l-.4 3.3h-1.8v6.65A10 10 0 0022 12z"/>
-                </svg>
-            </a>
-            <a href="https://twitter.com" target="_blank" class="hover:text-blue-300 transition">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M23 3a10.9 10.9 0 01-3.14 1.53A4.48 4.48 0 0012.5 7.5v1A10.66 10.66 0 013 4.1a4.48 4.48 0 001.39 6A4.52 4.52 0 012 9.7v.05A4.48 4.48 0 004.5 14a4.52 4.52 0 01-2 .08A4.48 4.48 0 007.5 17a9 9 0 01-6.6 1.8A12.72 12.72 0 006.3 21c7.5 0 11.6-6.2 11.6-11.6v-.53A8.18 8.18 0 0023 3z"/>
-                </svg>
-            </a>
-            <a href="https://linkedin.com" target="_blank" class="hover:text-blue-200 transition">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M4.98 3.5C3.88 3.5 3 4.38 3 5.48s.88 1.98 1.98 1.98S6.96 6.58 6.96 5.48 6.08 3.5 4.98 3.5zM3 8.98h3.96V21H3V8.98zm7.02 0h3.8v1.62h.05c.53-1.01 1.82-2.08 3.76-2.08 4.02 0 4.76 2.65 4.76 6.08V21h-3.96v-5.48c0-1.3-.02-2.98-1.82-2.98s-2.1 1.42-2.1 2.88V21h-3.96V8.98z"/>
-                </svg>
-            </a>
-        </div>
-    </div>
-</div>
+    <!-- Top Bar — hidden on mobile, visible md+ -->
+    <div class="topbar text-white text-xs hidden md:block">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 flex justify-between items-center">
 
-
-
-
-    <!-- Header -->
-    <header class="bg-blue-900 text-white shadow-lg">
-        <nav class="container mx-auto flex justify-between items-center py-4 px-6 bg-blue-900 text-white shadow-lg">
-            <a href="{{ route('home') }}" class="text-xl font-bold tracking-wide hover:text-gray-400 transition duration-300">{{env('APP_NAME')}}</a>
-
-            <!-- Mobile Menu Button -->
-            <div class="lg:hidden" x-data="{ open: false }">
-                <button @click="open = !open" class="text-white focus:outline-none">
-                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-                    </svg>
-                </button>
-
-                <!-- Sidebar -->
-                <div x-show="open" @click.outside="open = false" class="fixed top-0 right-0 w-64 h-full bg-gray-800 text-white shadow-xl z-50 p-6 transition-transform transform translate-x-0">
-                    <button @click="open = false" class="absolute top-4 right-4 text-white text-2xl">&times;</button>
-                    <ul class="mt-8 space-y-4">
-                        @auth
-                            <li class="text-lg font-bold">{{ auth()->user()->username }}</li>
-                            <hr class="border-gray-600 my-2">
-                            <li><a href="{{ route('dashboard') }}" class="block px-4 py-2 rounded-lg bg-gray-700 hover:bg-gray-600 transition">Dashboard</a></li>
-                            <li>
-                            <li><a href="{{ route('profile.index') }}" class="block px-4 py-2 rounded-lg  hover:bg-gray-600 transition">Profile</a></li>
-                            <li>
-                            <form method="POST" action="{{ route('logout') }}">
-                                @csrf
-                                <button type="submit" class="w-full text-left px-4 py-2 rounded-lg hover:bg-gray-600 transition">Logout</button>
-                            </form>
-                        </li>
-                        @endauth
-                        @guest
-                            <li><a href="{{ route('home') }}" class="block px-4 py-2 rounded-lg bg-gray-700 hover:bg-gray-600 transition">Home</a></li>
-                            <li><a href="{{ route('about') }}" class="block px-4 py-2 rounded-lg bg-gray-700 hover:bg-gray-600 transition">About us</a></li>
-                            <li><a href="{{ route('products') }}" class="block px-4 py-2 rounded-lg bg-gray-700 hover:bg-gray-600 transition">Our Products</a></li>
-                            <li><a href="{{ route('services') }}" class="block px-4 py-2 rounded-lg bg-gray-700 hover:bg-gray-600 transition">Our Services</a></li>
-                            <li><a href="{{ route('contact') }}" class="block px-4 py-2 rounded-lg bg-gray-700 hover:bg-gray-600 transition">Contact Us</a></li>
-                            <li><a href="{{ route('careers') }}" class="block px-4 py-2 rounded-lg bg-gray-700 hover:bg-gray-600 transition">Career</a></li>
-                            <li><a href="https://blog.bionictech.com.au/" target="_blank" class="block px-4 py-2 rounded-lg bg-gray-700 hover:bg-gray-600 transition">Blog</a></li>
-                            <li><a href="{{ route('login') }}" class="block px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 transition">Login</a></li>
-                            {{-- <li><a href="{{ route('register') }}" class="block px-4 py-2 rounded-lg bg-green-600 hover:bg-green-500 transition">Register</a></li> --}}
-                        @endguest
-                    </ul>
-                </div>
+            <!-- Left: contact info -->
+            <div class="flex items-center gap-4">
+                <a href="tel:+611300043198" class="flex items-center gap-1.5 text-slate-200 hover:text-blue-300 transition-colors">
+                    <i class="fas fa-phone-alt text-blue-400"></i>
+                    <span>+61 1300 043 198</span>
+                </a>
+                <span class="text-slate-500">|</span>
+                <a href="mailto:info@bionictech.com.au" class="flex items-center gap-1.5 text-slate-200 hover:text-blue-300 transition-colors">
+                    <i class="fas fa-envelope text-blue-400"></i>
+                    <span>info@bionictech.com.au</span>
+                </a>
+                <span class="hidden lg:block text-slate-500">|</span>
+                <span class="hidden lg:flex items-center gap-1.5 text-slate-300">
+                    <i class="fas fa-map-marker-alt text-blue-400"></i>
+                    Adelaide, SA, Australia
+                </span>
             </div>
 
-            <!-- Desktop Menu -->
-            <div class="hidden lg:flex items-center gap-6">
-                @auth
-                    <div class="relative" x-data="{ open: false }">
-                        <button @click="open = !open" class="rounded-full focus:outline-none">
-                            <img src="https://picsum.photos/200" alt="User Avatar" class="w-10 h-10 rounded-full border-2 border-white shadow">
-                        </button>
-                        <div x-show="open" @click.outside="open=false" class="absolute right-0 mt-3 bg-white shadow-lg rounded-lg w-48 py-2 text-gray-900">
-                            <p class="px-4 py-2 font-semibold">{{ auth()->user()->username }}</p>
-                            <hr class="border-gray-300">
-                            <a href="{{ route('dashboard') }}" class="block px-4 py-2 hover:bg-gray-200 transition">Dashboard</a>
-                            <a href="{{ route('profile.index') }}" class="block px-4 py-2 hover:bg-gray-200 transition">Profile</a>
-                            <form method="POST" action="{{ route('logout') }}">
-                                @csrf
-                                <button type="submit" class="w-full text-left px-4 py-2 hover:bg-gray-200 transition">Logout</button>
-                            </form>
+            <!-- Right: social icons -->
+            <div class="flex items-center gap-2">
+                <a href="https://www.facebook.com/BionicTechAustralia/" target="_blank"
+                   class="w-6 h-6 flex items-center justify-center rounded-full bg-white/10 hover:bg-blue-600 transition-all">
+                    <i class="fab fa-facebook-f text-xs"></i>
+                </a>
+                <a href="https://twitter.com" target="_blank"
+                   class="w-6 h-6 flex items-center justify-center rounded-full bg-white/10 hover:bg-sky-500 transition-all">
+                    <i class="fab fa-x-twitter text-xs"></i>
+                </a>
+                <a href="https://linkedin.com" target="_blank"
+                   class="w-6 h-6 flex items-center justify-center rounded-full bg-white/10 hover:bg-blue-700 transition-all">
+                    <i class="fab fa-linkedin-in text-xs"></i>
+                </a>
+                <a href="https://instagram.com" target="_blank"
+                   class="w-6 h-6 flex items-center justify-center rounded-full bg-white/10 hover:bg-pink-600 transition-all">
+                    <i class="fab fa-instagram text-xs"></i>
+                </a>
+            </div>
+        </div>
+    </div>
 
+    <!-- Main Header -->
+    <header class="main-header" x-data="{ mobileOpen: false }">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center py-3 md:py-4">
+
+            <!-- Logo -->
+            <a href="{{ route('home') }}" class="flex items-center gap-2.5 group flex-shrink-0">
+                <div class="w-8 h-8 md:w-9 md:h-9 rounded-xl bg-gradient-to-br from-blue-400 to-indigo-600 flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform duration-200">
+                    <i class="fas fa-bolt text-white text-sm"></i>
+                </div>
+                <div>
+                    <span class="logo-text text-base md:text-lg font-bold tracking-tight">Bionic Tech</span>
+                    <span class="block text-blue-300 text-[10px] font-medium -mt-1 tracking-widest uppercase">Australia</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav (lg+) -->
+            <div class="hidden lg:flex items-center gap-0.5">
+                @guest
+                    <a href="{{ route('home') }}"     class="nav-link text-white/90 hover:text-white text-sm font-medium px-3 py-2 rounded-lg hover:bg-white/10 transition-all duration-200">Home</a>
+                    <a href="{{ route('about') }}"    class="nav-link text-white/90 hover:text-white text-sm font-medium px-3 py-2 rounded-lg hover:bg-white/10 transition-all duration-200">About</a>
+                    <a href="{{ route('products') }}" class="nav-link text-white/90 hover:text-white text-sm font-medium px-3 py-2 rounded-lg hover:bg-white/10 transition-all duration-200">Products</a>
+                    <a href="{{ route('services') }}" class="nav-link text-white/90 hover:text-white text-sm font-medium px-3 py-2 rounded-lg hover:bg-white/10 transition-all duration-200">Services</a>
+                    <a href="{{ route('careers') }}"  class="nav-link text-white/90 hover:text-white text-sm font-medium px-3 py-2 rounded-lg hover:bg-white/10 transition-all duration-200">Careers</a>
+                    <a href="https://blog.bionictech.com.au/" target="_blank" class="nav-link text-white/90 hover:text-white text-sm font-medium px-3 py-2 rounded-lg hover:bg-white/10 transition-all duration-200">Blog</a>
+                    <a href="{{ route('contact') }}"  class="nav-link text-white/90 hover:text-white text-sm font-medium px-3 py-2 rounded-lg hover:bg-white/10 transition-all duration-200">Contact</a>
+                    <div class="ml-2 pl-3 border-l border-white/20">
+                        <a href="{{ route('login') }}" class="btn-cta text-white text-sm font-semibold px-5 py-2 rounded-xl inline-flex items-center gap-2">
+                            <i class="fas fa-sign-in-alt text-xs"></i> Login
+                        </a>
+                    </div>
+                @endguest
+
+                @auth
+                    <div class="relative" x-data="{ userOpen: false }">
+                        <button @click="userOpen = !userOpen"
+                                class="flex items-center gap-2 px-3 py-2 rounded-xl bg-white/10 hover:bg-white/20 transition-all text-white text-sm font-medium">
+                            <div class="w-8 h-8 rounded-full bg-gradient-to-br from-blue-400 to-indigo-500 flex items-center justify-center text-white text-xs font-bold">
+                                {{ strtoupper(substr(auth()->user()->username, 0, 1)) }}
+                            </div>
+                            <span class="hidden xl:block">{{ auth()->user()->username }}</span>
+                            <i class="fas fa-chevron-down text-xs text-white/70" :class="userOpen ? 'rotate-180' : ''" style="transition:transform .2s"></i>
+                        </button>
+                        <div x-show="userOpen" x-cloak @click.outside="userOpen = false"
+                             x-transition:enter="transition ease-out duration-200"
+                             x-transition:enter-start="opacity-0 scale-95 -translate-y-1"
+                             x-transition:enter-end="opacity-100 scale-100 translate-y-0"
+                             class="absolute right-0 mt-2 w-52 bg-white rounded-2xl shadow-2xl border border-slate-100 overflow-hidden z-50">
+                            <div class="px-4 py-3 bg-gradient-to-r from-blue-50 to-indigo-50 border-b border-slate-100">
+                                <p class="text-xs text-slate-500">Signed in as</p>
+                                <p class="font-semibold text-slate-800 text-sm truncate">{{ auth()->user()->username }}</p>
+                            </div>
+                            <a href="{{ route('dashboard') }}"   class="flex items-center gap-2 px-4 py-2.5 text-sm text-slate-700 hover:bg-slate-50 transition-colors"><i class="fas fa-th-large text-blue-500 w-4"></i> Dashboard</a>
+                            <a href="{{ route('profile.index') }}" class="flex items-center gap-2 px-4 py-2.5 text-sm text-slate-700 hover:bg-slate-50 transition-colors"><i class="fas fa-user text-blue-500 w-4"></i> Profile</a>
+                            <div class="border-t border-slate-100">
+                                <form method="POST" action="{{ route('logout') }}">
+                                    @csrf
+                                    <button type="submit" class="w-full flex items-center gap-2 px-4 py-2.5 text-sm text-red-600 hover:bg-red-50 transition-colors">
+                                        <i class="fas fa-sign-out-alt w-4"></i> Logout
+                                    </button>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 @endauth
+            </div>
+
+            <!-- Mobile: right side actions -->
+            <div class="flex items-center gap-2 lg:hidden">
                 @guest
-                <a href="{{ route('home') }}" class="px-4 py-2 hover:text-gray-400 transition">Home</a>
-                 <a href="{{ route('about') }}" class="px-4 py-2 hover:text-gray-400 transition">About us</a>
-                 <a href="{{ route('products') }}" class="px-4 py-2 hover:text-gray-400 transition">Our Products</a>
-                    <a href="{{ route('services') }}" class="px-4 py-2 hover:text-gray-400 transition">Our Services</a>
-                    <a href="{{ route('contact') }}" class="px-4 py-2 hover:text-gray-400 transition">Contact Us</a>
-                    <a href="{{ route('careers') }}" class="px-4 py-2 hover:text-gray-400 transition">Career</a>
-                    <a href="https://blog.bionictech.com.au/" target="_blank" class="px-4 py-2 hover:text-gray-400 transition">Blog</a>
-                    <a href="{{ route('login') }}" class="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-lg transition">Login</a>
-                    {{-- <a href="{{ route('register') }}" class="px-4 py-2 bg-green-600 hover:bg-green-500 text-white rounded-lg transition">Register</a> --}}
+                    <a href="{{ route('login') }}" class="btn-cta text-white text-xs font-semibold px-4 py-2 rounded-lg inline-flex items-center gap-1.5">
+                        <i class="fas fa-sign-in-alt text-xs"></i>
+                        <span class="hidden sm:inline">Login</span>
+                    </a>
                 @endguest
+                @auth
+                    <div class="w-8 h-8 rounded-full bg-gradient-to-br from-blue-400 to-indigo-500 flex items-center justify-center text-white text-xs font-bold">
+                        {{ strtoupper(substr(auth()->user()->username, 0, 1)) }}
+                    </div>
+                @endauth
+                <button @click="mobileOpen = true"
+                        class="w-10 h-10 flex items-center justify-center rounded-xl bg-white/10 hover:bg-white/20 transition text-white">
+                    <i class="fas fa-bars text-lg"></i>
+                </button>
             </div>
         </nav>
 
+        <!-- Mobile Overlay -->
+        <div x-show="mobileOpen" x-cloak @click="mobileOpen = false"
+             x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
+             x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"
+             class="fixed inset-0 mobile-sidebar-overlay z-40 lg:hidden">
+        </div>
 
+        <!-- Mobile Sidebar -->
+        <div x-show="mobileOpen" x-cloak
+             x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 translate-x-full" x-transition:enter-end="opacity-100 translate-x-0"
+             x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100 translate-x-0" x-transition:leave-end="opacity-0 translate-x-full"
+             class="fixed top-0 right-0 w-72 h-full mobile-sidebar z-50 lg:hidden shadow-2xl flex flex-col">
+
+            <!-- Sidebar top -->
+            <div class="flex items-center justify-between px-5 py-4 border-b border-white/10">
+                <div class="flex items-center gap-2.5">
+                    <div class="w-8 h-8 rounded-xl bg-gradient-to-br from-blue-400 to-indigo-600 flex items-center justify-center">
+                        <i class="fas fa-bolt text-white text-xs"></i>
+                    </div>
+                    <span class="text-white font-bold text-sm">Bionic Tech Australia</span>
+                </div>
+                <button @click="mobileOpen = false" class="w-8 h-8 flex items-center justify-center rounded-lg bg-white/10 hover:bg-white/20 text-white transition">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <!-- Mobile contact info strip -->
+            <div class="px-5 py-3 border-b border-white/10 space-y-1.5">
+                <a href="tel:+611300043198" class="flex items-center gap-2 text-xs text-slate-200 hover:text-blue-300 transition-colors">
+                    <i class="fas fa-phone-alt text-blue-400 text-xs w-3"></i> +61 1300 043 198
+                </a>
+                <a href="mailto:info@bionictech.com.au" class="flex items-center gap-2 text-xs text-slate-200 hover:text-blue-300 transition-colors">
+                    <i class="fas fa-envelope text-blue-400 text-xs w-3"></i> info@bionictech.com.au
+                </a>
+            </div>
+
+            <!-- Nav links -->
+            <nav class="flex-1 overflow-y-auto px-4 py-4 space-y-0.5">
+                @guest
+                    <a href="{{ route('home') }}"     class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-100 hover:bg-white/10 hover:text-white transition text-sm font-medium"><i class="fas fa-home text-blue-400 w-4 text-center"></i> Home</a>
+                    <a href="{{ route('about') }}"    class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-100 hover:bg-white/10 hover:text-white transition text-sm font-medium"><i class="fas fa-info-circle text-blue-400 w-4 text-center"></i> About Us</a>
+                    <a href="{{ route('products') }}" class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-100 hover:bg-white/10 hover:text-white transition text-sm font-medium"><i class="fas fa-box text-blue-400 w-4 text-center"></i> Our Products</a>
+                    <a href="{{ route('services') }}" class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-100 hover:bg-white/10 hover:text-white transition text-sm font-medium"><i class="fas fa-cogs text-blue-400 w-4 text-center"></i> Our Services</a>
+                    <a href="{{ route('careers') }}"  class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-100 hover:bg-white/10 hover:text-white transition text-sm font-medium"><i class="fas fa-briefcase text-blue-400 w-4 text-center"></i> Careers</a>
+                    <a href="https://blog.bionictech.com.au/" target="_blank" class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-100 hover:bg-white/10 hover:text-white transition text-sm font-medium">
+                        <i class="fas fa-pen-nib text-blue-400 w-4 text-center"></i> Blog
+                        <i class="fas fa-external-link-alt text-xs text-slate-400 ml-auto"></i>
+                    </a>
+                    <a href="{{ route('contact') }}"  class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-100 hover:bg-white/10 hover:text-white transition text-sm font-medium"><i class="fas fa-envelope text-blue-400 w-4 text-center"></i> Contact Us</a>
+                @endguest
+
+                @auth
+                    <div class="flex items-center gap-3 px-4 py-3 mb-2 bg-white/10 rounded-xl">
+                        <div class="w-9 h-9 rounded-full bg-gradient-to-br from-blue-400 to-indigo-500 flex items-center justify-center text-white font-bold text-sm flex-shrink-0">
+                            {{ strtoupper(substr(auth()->user()->username, 0, 1)) }}
+                        </div>
+                        <div class="min-w-0">
+                            <p class="text-white font-semibold text-sm truncate">{{ auth()->user()->username }}</p>
+                            <p class="text-slate-300 text-xs">Logged in</p>
+                        </div>
+                    </div>
+                    <a href="{{ route('dashboard') }}"    class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-100 hover:bg-white/10 hover:text-white transition text-sm font-medium"><i class="fas fa-th-large text-blue-400 w-4 text-center"></i> Dashboard</a>
+                    <a href="{{ route('profile.index') }}" class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-100 hover:bg-white/10 hover:text-white transition text-sm font-medium"><i class="fas fa-user text-blue-400 w-4 text-center"></i> Profile</a>
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <button type="submit" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-red-400 hover:bg-red-500/10 transition text-sm font-medium">
+                            <i class="fas fa-sign-out-alt w-4 text-center"></i> Logout
+                        </button>
+                    </form>
+                @endauth
+            </nav>
+
+            <!-- Sidebar social + CTA -->
+            <div class="px-4 pb-6 space-y-3">
+                <div class="flex items-center justify-center gap-3 py-3 border-t border-white/10">
+                    <a href="https://www.facebook.com/BionicTechAustralia/" target="_blank" class="w-8 h-8 flex items-center justify-center rounded-full bg-white/10 hover:bg-blue-600 transition text-white text-xs"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://twitter.com" target="_blank"  class="w-8 h-8 flex items-center justify-center rounded-full bg-white/10 hover:bg-sky-500 transition text-white text-xs"><i class="fab fa-x-twitter"></i></a>
+                    <a href="https://linkedin.com" target="_blank" class="w-8 h-8 flex items-center justify-center rounded-full bg-white/10 hover:bg-blue-700 transition text-white text-xs"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://instagram.com" target="_blank" class="w-8 h-8 flex items-center justify-center rounded-full bg-white/10 hover:bg-pink-600 transition text-white text-xs"><i class="fab fa-instagram"></i></a>
+                </div>
+                @guest
+                <a href="{{ route('login') }}" class="btn-cta flex items-center justify-center gap-2 w-full py-3 rounded-xl text-white text-sm font-semibold">
+                    <i class="fas fa-sign-in-alt"></i> Login to Your Account
+                </a>
+                @endguest
+            </div>
+        </div>
     </header>
+</div>
+<!-- ===== END HEADER ===== -->
 
-    <!-- Main Content -->
+<!-- Page Content -->
+{{ $slot }}
 
-
-        {{ $slot }}
-
-    <x-footer />
+<x-footer />
 </body>
-
 </html>
